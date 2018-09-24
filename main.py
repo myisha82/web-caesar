@@ -31,10 +31,10 @@ form = """
 rotateby_form = """
     <form action ="/encrypt" method ="post">
         <label>
-            <input type ="text" name = "rot" value= "0" />
+            <input type ="text" name="rot" value= "0" />
          
-        </label>
-           <input type ="textarea" name = "text" /> 
+        </label> 
+           <input type ="textarea" name="text" /> 
             <input type="submit" value="Submit"/>
     </form>   
     """   
@@ -44,7 +44,9 @@ footer = """
 """
 
 @app.route("/encrypt", methods=['POST'])
-def encrypt(rot, text):
+def encrypt():
+    rot = request.form['rot']
+    text = request.form['text']
     local_rot = int(rot)
     local_text = text 
     value_text = rotate_string(local_text, local_rot)
